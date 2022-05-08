@@ -13,7 +13,12 @@ namespace OrderBLL
         OrderBLLContext context;
         public Products() 
         {
-            context = new();
+            context = new(ConfigureSQL.Options);
+        }
+
+        public Products(OrderBLLContext inputcontext)
+        {
+            context = inputcontext;
         }
 
         public IEnumerable<Product> GetAll() 

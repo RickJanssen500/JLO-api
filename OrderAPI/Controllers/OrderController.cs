@@ -30,18 +30,49 @@ namespace OrderAPI.Controllers
         }
 
 
-        [HttpPost("post")]
+        [HttpPost("Add")]
         public ActionResult Add(int Uid, int Pid, int Amount)
         {
-
-               return BadRequest();
-
+            Cart cart = new();
+            bool check = cart.AddToCart(Uid,Pid,Amount);
+            if (check)
+            {
+                return Ok();
+            }
+            else 
+            {
+                return BadRequest();
+            }
         }
 
-
-        [HttpDelete("del/{id}")]
-        public void Delete(int id)
+        [HttpPost("CompleteOrder")]
+        public ActionResult Complete(int Uid, DateTime date)
         {
+            OrderInfo order = new();
+            bool check = order.CompleteOrder(Uid, date);
+            if (check)
+            {
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+
+        [HttpDelete("Del")]
+        public ActionResult Delete(int id, int pid)
+        {
+            Cart cart = new();
+            bool check = cart.RemoveFromCart(id, pid);
+            if (check)
+            {
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
     }
 }

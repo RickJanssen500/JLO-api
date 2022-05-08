@@ -10,14 +10,19 @@ namespace OrderBLL.Data
 {
     public class OrderBLLContext : DbContext
     {
+        public OrderBLLContext() 
+        {
+        }
+        public OrderBLLContext(DbContextOptions<OrderBLLContext> options)
+            : base(options) 
+        { 
+           
+        }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderProduct> OrderProducts { get; set; }
         public DbSet<Product> Products { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer("Server=mssqlstud.fhict.local;Database=dbi454010;User Id=dbi454010;Password=70Cent; ");
-        }
+
     }
 }
