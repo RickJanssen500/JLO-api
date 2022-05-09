@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace OrderBLL.Migrations
+namespace OrderDAL.Migrations
 {
     public partial class InitalCreate : Migration
     {

@@ -4,16 +4,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using OrderBLL.Models;
+using OrderDAL.Models;
 
-namespace OrderBLL.Data
+namespace OrderDAL.Data
 {
-    public class OrderBLLContext : DbContext
+    public class OrderDALContext : DbContext
     {
-        public OrderBLLContext() 
+        public OrderDALContext() 
         {
         }
-        public OrderBLLContext(DbContextOptions<OrderBLLContext> options)
+        public OrderDALContext(DbContextOptions<OrderDALContext> options)
             : base(options) 
         { 
            

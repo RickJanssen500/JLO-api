@@ -4,8 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using OrderBLL;
-using OrderBLL.Models;
+using OrderLogic;
+using OrderDAL.Models;
 using Microsoft.AspNetCore.Cors;
 
 namespace OrderAPI.Controllers

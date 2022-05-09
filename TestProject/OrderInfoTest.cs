@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using OrderBLL;
-using OrderBLL.Data;
-using OrderBLL.Models;
+using OrderLogic;
+using OrderDAL.Data;
+using OrderDAL.Models;
 using System;
 using System.Linq;
 using Xunit;
@@ -14,10 +14,10 @@ namespace TestProject
         public void GetOrderID_NotCompleted()
         {
             // arrange
-            var options = new DbContextOptionsBuilder<OrderBLLContext>()
+            var options = new DbContextOptionsBuilder<OrderDALContext>()
                 .UseInMemoryDatabase(databaseName: "GetOrderID_NotCompleted")
                 .Options;
-            var context = new OrderBLLContext(options);
+            var context = new OrderDALContext(options);
             Order o1 = new();
             o1.Complete = false;
             o1.UserId = 1;
@@ -37,10 +37,10 @@ namespace TestProject
         public void GetOrderID_Completed()
         {
             // arrange
-            var options = new DbContextOptionsBuilder<OrderBLLContext>()
+            var options = new DbContextOptionsBuilder<OrderDALContext>()
                 .UseInMemoryDatabase(databaseName: "GetOrderID_Completed")
                 .Options;
-            var context = new OrderBLLContext(options);
+            var context = new OrderDALContext(options);
             Order o1 = new();
             o1.Complete = true;
             o1.UserId = 1;
@@ -60,10 +60,10 @@ namespace TestProject
         public void CompleteOrder_Succes()
         {
             // arrange
-            var options = new DbContextOptionsBuilder<OrderBLLContext>()
+            var options = new DbContextOptionsBuilder<OrderDALContext>()
                 .UseInMemoryDatabase(databaseName: "CompleteOrder_Succes")
                 .Options;
-            var context = new OrderBLLContext(options);
+            var context = new OrderDALContext(options);
             Order o1 = new();
             o1.Complete = false;
             o1.UserId = 2;

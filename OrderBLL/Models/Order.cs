@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace OrderBLL.Models
+namespace OrderDAL.Models
 {
     public class Order
     {

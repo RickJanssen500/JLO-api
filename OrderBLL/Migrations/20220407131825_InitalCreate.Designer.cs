@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using OrderBLL.Data;
+using OrderDAL.Data;
 
-namespace OrderBLL.Migrations
+namespace OrderDAL.Migrations
 {
-    [DbContext(typeof(OrderBLLContext))]
+    [DbContext(typeof(OrderDALContext))]
     [Migration("20220407131825_InitalCreate")]
     partial class InitalCreate
     {

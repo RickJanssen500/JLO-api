@@ -22,7 +22,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\OrderBLL\OrderBLL.csproj" />
+    <ProjectReference Include="..\OrderBLL\OrderDAL.csproj" />
+    <ProjectReference Include="..\OrderLogic\OrderLogic.csproj" />
   </ItemGroup>
 
 </Project>

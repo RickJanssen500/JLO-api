@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using OrderBLL.Models;
-using OrderBLL.Data;
+using OrderDAL.Models;
+using OrderDAL.Data;
 
-namespace OrderBLL
+namespace OrderLogic
 {
     public class Products
     {
-        OrderBLLContext context;
+        OrderDALContext context;
         public Products() 
         {
             context = new(ConfigureSQL.Options);
         }
 
-        public Products(OrderBLLContext inputcontext)
+        public Products(OrderDALContext inputcontext)
         {
             context = inputcontext;
         }

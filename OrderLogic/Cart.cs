@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using OrderBLL.Models;
-using OrderBLL.Data;
+using OrderDAL.Models;
+using OrderDAL.Data;
 using Microsoft.EntityFrameworkCore;
 
-namespace OrderBLL
+namespace OrderLogic
 {
     public class Cart
     {
         OrderInfo oi;
         Products prod;
-        OrderBLLContext context;
+        OrderDALContext context;
         public Cart()
         {
             context = new(ConfigureSQL.Options);
@@ -21,7 +21,7 @@ namespace OrderBLL
              prod = new();
         }
 
-        public Cart(OrderBLLContext inputcontext)
+        public Cart(OrderDALContext inputcontext)
         {
             context = inputcontext;
              oi = new(context);

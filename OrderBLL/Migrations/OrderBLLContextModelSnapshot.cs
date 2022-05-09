@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using OrderBLL.Data;
+using OrderDAL.Data;
 
 namespace OrderBLL.Migrations
 {
-    [DbContext(typeof(OrderBLLContext))]
+    [DbContext(typeof(OrderDALContext))]
     partial class OrderBLLContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

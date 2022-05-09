@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using OrderBLL;
-using OrderBLL.Data;
-using OrderBLL.Models;
+using OrderLogic;
+using OrderDAL.Data;
+using OrderDAL.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,10 +15,10 @@ namespace TestProject
         public void ItemCount_Succes()
         {
             // arrange
-            var options = new DbContextOptionsBuilder<OrderBLLContext>()
+            var options = new DbContextOptionsBuilder<OrderDALContext>()
                 .UseInMemoryDatabase(databaseName: "ItemCount_Succes")
                 .Options;
-            var context = new OrderBLLContext(options);
+            var context = new OrderDALContext(options);
             Order o1 = new();
             o1.UserId = 7;
             o1.Complete = false;
@@ -55,10 +55,10 @@ namespace TestProject
         public void GetCart_Succes()
         {
             // arrange
-            var options = new DbContextOptionsBuilder<OrderBLLContext>()
+            var options = new DbContextOptionsBuilder<OrderDALContext>()
                 .UseInMemoryDatabase(databaseName: "GetCart_Succes")
                 .Options;
-            var context = new OrderBLLContext(options);
+            var context = new OrderDALContext(options);
             Order o1 = new();
             o1.UserId = 7;
             o1.Complete = false;
@@ -94,10 +94,10 @@ namespace TestProject
         public void AddToCart_Succes()
         {
             // arrange
-            var options = new DbContextOptionsBuilder<OrderBLLContext>()
+            var options = new DbContextOptionsBuilder<OrderDALContext>()
                 .UseInMemoryDatabase(databaseName: "AddToCart_Succes")
                 .Options;
-            var context = new OrderBLLContext(options);
+            var context = new OrderDALContext(options);
             Order o1 = new();
             o1.UserId = 7;
             o1.Complete = false;
@@ -138,10 +138,10 @@ namespace TestProject
         public void RemoveFromCart_Succes_1()
         {
             // arrange
-            var options = new DbContextOptionsBuilder<OrderBLLContext>()
+            var options = new DbContextOptionsBuilder<OrderDALContext>()
                 .UseInMemoryDatabase(databaseName: "RemoveFromCart_Succes_1")
                 .Options;
-            var context = new OrderBLLContext(options);
+            var context = new OrderDALContext(options);
             Order o1 = new();
             o1.UserId = 7;
             o1.Complete = false;
@@ -187,10 +187,10 @@ namespace TestProject
         public void RemoveFromCart_Succes_2()
         {
             // arrange
-            var options = new DbContextOptionsBuilder<OrderBLLContext>()
+            var options = new DbContextOptionsBuilder<OrderDALContext>()
                 .UseInMemoryDatabase(databaseName: "RemoveFromCart_Succes_2")
                 .Options;
-            var context = new OrderBLLContext(options);
+            var context = new OrderDALContext(options);
             Order o1 = new();
             o1.UserId = 7;
             o1.Complete = false;
@@ -241,10 +241,10 @@ namespace TestProject
         public void RemoveFromCart_Succes_DifferentCart()
         {
             // arrange
-            var options = new DbContextOptionsBuilder<OrderBLLContext>()
+            var options = new DbContextOptionsBuilder<OrderDALContext>()
                 .UseInMemoryDatabase(databaseName: "RemoveFromCart_Succes_DifferentCart")
                 .Options;
-            var context = new OrderBLLContext(options);
+            var context = new OrderDALContext(options);
             Order o1 = new();
             o1.UserId = 7;
             o1.Complete = false;

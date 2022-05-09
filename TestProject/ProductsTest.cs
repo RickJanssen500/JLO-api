@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using OrderBLL;
-using OrderBLL.Data;
-using OrderBLL.Models;
+using OrderLogic;
+using OrderDAL.Data;
+using OrderDAL.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,10 +15,10 @@ namespace TestProject
         public void GetAll_Succes()
         {
             // arrange
-            var options = new DbContextOptionsBuilder<OrderBLLContext>()
+            var options = new DbContextOptionsBuilder<OrderDALContext>()
                 .UseInMemoryDatabase(databaseName: "GetAll_Succes")
                 .Options;
-            var context = new OrderBLLContext(options);
+            var context = new OrderDALContext(options);
             Product p1 = new();
             p1.Name = "test";
             Product p2 = new();
@@ -40,10 +40,10 @@ namespace TestProject
         public void GetByID_Succes() 
         {
             // arrange
-            var options = new DbContextOptionsBuilder<OrderBLLContext>()
+            var options = new DbContextOptionsBuilder<OrderDALContext>()
                 .UseInMemoryDatabase(databaseName: "GetByID_Succes")
                 .Options;
-            var context = new OrderBLLContext(options);
+            var context = new OrderDALContext(options);
             Product p1 = new();
             p1.Name = "test";
             Product p2 = new();
@@ -65,10 +65,10 @@ namespace TestProject
         public void GetByID_Failed()
         {
             // arrange
-            var options = new DbContextOptionsBuilder<OrderBLLContext>()
+            var options = new DbContextOptionsBuilder<OrderDALContext>()
                 .UseInMemoryDatabase(databaseName: "GetByID_Failed")
                 .Options;
-            var context = new OrderBLLContext(options);
+            var context = new OrderDALContext(options);
             Product p1 = new();
             p1.Name = "test";
             Product p2 = new();
