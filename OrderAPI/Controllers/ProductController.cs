@@ -24,7 +24,7 @@ namespace OrderAPI.Controllers
         }
 
         
-        [HttpGet("get/{id}")]
+        [HttpGet("getone")]
         public ActionResult<Product> Get(int id)
         {
             Products products = new();

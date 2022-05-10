@@ -10,14 +10,15 @@ namespace OrderDAL.Data
 {
     public class OrderDALContext : DbContext
     {
+
         public OrderDALContext() 
         {
         }
         public OrderDALContext(DbContextOptions<OrderDALContext> options)
             : base(options) 
-        { 
-           
+        {
         }
+
         public DbSet<Category> Categories { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderProduct> OrderProducts { get; set; }

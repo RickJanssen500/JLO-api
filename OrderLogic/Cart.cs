@@ -14,18 +14,21 @@ namespace OrderLogic
         OrderInfo oi;
         Products prod;
         OrderDALContext context;
+        bool testcheck;
         public Cart()
         {
             context = new(ConfigureSQL.Options);
-             oi = new();
-             prod = new();
+            oi = new();
+            prod = new();
+            testcheck = false;
         }
 
         public Cart(OrderDALContext inputcontext)
         {
             context = inputcontext;
-             oi = new(context);
-             prod = new(context);
+            oi = new(context);
+            prod = new(context);
+            testcheck = true;
         }
 
         public int ItemCount(int id)
@@ -43,14 +46,28 @@ namespace OrderLogic
         public bool AddToCart(int id, int prodid,int amount)
         {
             int orderid = oi.GetOrderID(id);
-            OrderProduct oproduct = new();
-            oproduct.OrderId = orderid;
-            oproduct.picked = false;
-            oproduct.Amount = amount;
-            oproduct.product = prod.GetProduct(prodid);
-            context.OrderProducts.Add(oproduct) ;
+            if (testcheck)
+            {
+                Product product = GetProduct(prodid);
+                OrderProduct oproduct = new();
+                oproduct.OrderId = orderid;
+                oproduct.picked = false;
+                oproduct.Amount = amount;
+                oproduct.product = product;
+                context.OrderProducts.Add(oproduct);
+            }
+            else 
+            {
+                context.Database.ExecuteSqlInterpolated($"INSERT INTO OrderProducts (OrderId, productId, Amount, picked)VALUES({orderid}, {prodid}, {amount}, 0); ");
+            }
             context.SaveChanges();
             return true;
+        }
+
+        private Product GetProduct(int id) 
+        {
+           Product product = prod.GetProduct(id);
+            return product;
         }
 
         public bool RemoveFromCart(int id, int prodid)
