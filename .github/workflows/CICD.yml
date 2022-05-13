@@ -48,7 +48,7 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           local-dir: ./
           server-dir: ${{ secrets.APP_DIR }}
-          protocol: ftp
+          protocol: ftps
           security: loose
           dangerous-clean-slate: true
           
