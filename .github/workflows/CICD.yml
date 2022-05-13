@@ -51,3 +51,15 @@ jobs:
           protocol: ftps
           security: loose
           dangerous-clean-slate: true
+          
+      - name: Deploy to server using FTP2
+        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        with:
+          server: ${{ secrets.SERVER_URL }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          local-dir: ./
+          server-dir: ${{ secrets.APP_DIR }}
+          protocol: ftps
+          security: loose
+          dangerous-clean-slate: true
