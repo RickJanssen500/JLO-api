@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using OrderLogic;
 using OrderDAL.Models;
 using Microsoft.AspNetCore.Cors;
+using OrderDAL.Data;
 
 namespace OrderAPI.Controllers
 {
@@ -14,12 +15,21 @@ namespace OrderAPI.Controllers
     [ApiController]
     public class ProductController : Controller
     {
+        Products products;
+        public ProductController()
+        {
+            products = new();
+        }
+        public ProductController(OrderDALContext inputcontext)
+        {
+            products = new(inputcontext);
+        }
 
-        
+
+
         [HttpGet("get")]
         public ActionResult<IEnumerable<Product>> Get()
         {
-            Products products = new();
             return Ok(products.GetAll());
         }
 
@@ -27,7 +37,6 @@ namespace OrderAPI.Controllers
         [HttpGet("getone")]
         public ActionResult<Product> Get(int id)
         {
-            Products products = new();
             Product product = products.GetProduct(id);
             if (product == null)
             {

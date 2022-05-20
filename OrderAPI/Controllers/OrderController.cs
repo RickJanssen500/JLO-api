@@ -8,8 +8,7 @@ using OrderDAL.Models;
 using Newtonsoft.Json;
 using OrderAPI.JTO;
 using System.Text.Json;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using OrderDAL.Data;
 
 namespace OrderAPI.Controllers
 {
@@ -17,18 +16,28 @@ namespace OrderAPI.Controllers
     [ApiController]
     public class OrderController : ControllerBase
     {
+        Cart cart;
+        OrderInfo order;
+        public OrderController()
+        {
+            cart = new();
+            order = new();
+        }
+        public OrderController(OrderDALContext inputcontext)
+        {
+            cart = new(inputcontext);
+            order = new(inputcontext);
+        }
 
         [HttpGet("itemcount")]
         public ActionResult<int> Get(int id)
         {
-            Cart cart = new();
             return Ok(cart.ItemCount(id));
         }
 
         [HttpGet("getcart")]
         public ActionResult<IEnumerable<OrderProduct>> GetCart(int id)
         {
-            Cart cart = new();
             return Ok(cart.GetCart(id));
         }
 
@@ -37,7 +46,6 @@ namespace OrderAPI.Controllers
         public ActionResult Add([FromBody] JsonElement payload)
         {
             AddProduct addproduct = JsonConvert.DeserializeObject<AddProduct>(payload.ToString());
-            Cart cart = new();
             bool check = cart.AddToCart(addproduct.Uid,addproduct.Pid,addproduct.Amount);
             if (check)
             {
@@ -53,7 +61,6 @@ namespace OrderAPI.Controllers
         public ActionResult Complete([FromBody] JsonElement payload)
         {
             Complete complete = JsonConvert.DeserializeObject<Complete>(payload.ToString());
-            OrderInfo order = new();
             bool check = order.CompleteOrder(complete.Uid, complete.date);
             if (check)
             {
@@ -68,7 +75,6 @@ namespace OrderAPI.Controllers
         [HttpDelete("Del/{id}/{pid}")]
         public ActionResult Delete(int id, int pid)
         {
-            Cart cart = new();
             bool check = cart.RemoveFromCart(id, pid);
             if (check)
             {
