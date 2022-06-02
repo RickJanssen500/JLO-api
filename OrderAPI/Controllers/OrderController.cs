@@ -16,18 +16,9 @@ namespace OrderAPI.Controllers
     [ApiController]
     public class OrderController : ControllerBase
     {
-        Cart cart;
-        OrderInfo order;
-        public OrderController()
-        {
-            cart = new();
-            order = new();
-        }
-        public OrderController(OrderDALContext inputcontext)
-        {
-            cart = new(inputcontext);
-            order = new(inputcontext);
-        }
+        Cart cart = new();
+        OrderInfo order = new();
+      
 
         [HttpGet("itemcount")]
         public ActionResult<int> Get(int id)

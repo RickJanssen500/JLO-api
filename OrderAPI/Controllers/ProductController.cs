@@ -15,15 +15,8 @@ namespace OrderAPI.Controllers
     [ApiController]
     public class ProductController : Controller
     {
-        Products products;
-        public ProductController()
-        {
-            products = new();
-        }
-        public ProductController(OrderDALContext inputcontext)
-        {
-            products = new(inputcontext);
-        }
+        public Products products = new();
+   
 
 
 
